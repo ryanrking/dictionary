@@ -29,6 +29,55 @@ function onClick(e) {
     });
 }
 
+function recipeDetailed(json) {
+  let recipe = document.createElement("div");
+  recipe.className = "recipe";
+
+  let header_info = document.createElement("div");
+  recipe.className = "recipe-header";
+
+  // Ingredients group
+  let ingredients_group = document.createElement("div");
+  ingredients_group.className = "recipe-ingreds";
+
+  let ingredients_table = document.createElement("table");
+  ingredients_table.className = "recipe-table";
+
+  let row_head = document.createElement("tr");
+
+  let table_title_1 = document.createElement("td");
+  table_title_1.appendChild(document.createTextNode("Ingredient"));
+  let table_title_2 = document.createElement("td");
+  table_title_2.appendChild(document.createTextNode("Measurement"));
+  row_head.appendChild(table_title_1);
+  row_head.appendChild(table_title_2);
+
+  ingredients_table.appendChild(row_head);
+
+  for (var i = 1; i <= 20; i++) {
+    let row = document.createElement("tr");
+
+    if ((str_ingred = json.meals["strIngredients" + i]) !== None) {
+      let ingredient = document.createElement("td");
+      ingredient.className = "ingredient";
+      ingredient.appendChild(document.createTextNode(str_ingred));
+
+      let measurment = document.createElement("td");
+      measurment.className = "measurement";
+      measurment.appendChild(document.createTextNode(json.meals["strMeasure" + i]));
+
+      row.appendChild(ingredient);
+      row.appendChild(measurment);
+      ingredients_table.appendChild(row);
+    }
+  }
+
+
+  let instructions = document.createElement("div");
+  instructions.className = "recipe-instrucs";
+
+}
+
 function updateResult(info) {
   document.getElementById('result').textContent = info;
 }
