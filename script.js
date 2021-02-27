@@ -2,15 +2,25 @@ function onClick(e) {
   e.preventDefault();
   // Delete this before publishing
   let corsUrl = "https://cors-anywhere.herokuapp.com/"
+
   // get form values
   let s = document.getElementById("selector");
   let type = s.options[s.selectedIndex].value;
-
-  //FIXME assumes always random
-  //if (type === "random")
   
+  let url = corsUrl + "http://themealdb.com/api/json/v1/1/";
+  if (type === "search") {
+    url += "search.php?s=" + document.getElementById("search-input").value; 
+  } else if (type === "category") {
+    //FIXME hardcoded until dropdown working
+    url += "filter.php?c=" + "Seafood"
+
+  } else if (type === "random") {
+    url += "random.php";
+  }
+
+  console.log(url);
+
   // setup URL
-  let url = corsUrl + "http://themealdb.com/api/json/v1/1/random.php";
   
   // call API
   fetch(url)
@@ -24,9 +34,23 @@ function onClick(e) {
       return response.json();
 
     }).then(function(json) {
-      // update DOM with response
-      console.log(json);
+      if (type === "random") {
+        recipeResult(json);
+      } else {
+        listResult(json);
+      }
     });
+}
+
+function recipeResult(info) {
+
+}
+
+function listResult(info) {
+  let results = "<div class='recipe-row'>";
+  results += "<p class='recipe-list-title>";
+
+  results += "</p><"
 }
 
 function updateResult(info) {
