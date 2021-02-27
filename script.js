@@ -76,9 +76,31 @@ function selectorChange() {
     let categories = document.createElement("select");
     categories.id = "categories";
 
-    let url = "http://www.themealdb.com/api/json/v1/1/categories.php";
+    let corsUrl = "https://cors-anywhere.herokuapp.com/";
+    let cat_url = corsUrl + "http://www.themealdb.com/api/json/v1/1/categories.php";
     // call API
     
+    fetch(cat_url)
+    .then(function(response) {
+      // make sure the request was successful
+      if (response.status != 200) {
+        return {
+          text: "Error calling the TheMealDB API service: " + response.statusText
+        }
+      }
+      return response.json();
+
+    }).then(function(json) {
+      // update DOM with response
+      console.log(json);
+      for (let i=0; i < json.categories.length; i++) {
+        let item = document.createElement("option");
+        item.value = json.categories[i].strCategory;
+        item.appendChild(document.createTextNode(json.categories[i].strCategory));
+        categories.appendChild(item);
+      }
+    });
+    input.appendChild(categories);
 
     // <option value="random">Random Dish</option>
     // <select id="selector" onchange="selectorChange()">
