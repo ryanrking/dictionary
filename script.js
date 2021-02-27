@@ -1,6 +1,6 @@
 function onClick(e) {
   e.preventDefault();
-  // Delete this before publishing
+  // FIXME Delete this before publishing
   let corsUrl = "https://cors-anywhere.herokuapp.com/"
 
   // get form values
@@ -10,12 +10,10 @@ function onClick(e) {
   let url = corsUrl + "http://themealdb.com/api/json/v1/1/";
   if (type === "search") {
     url += "search.php?s=" + document.getElementById("search-input").value; 
+  
   } else if (type === "category") {
-    //FIXME hardcoded until dropdown working
     let cat = document.getElementById("categories");
     let catType = cat.options[cat.selectedIndex].value;
-
-
     url += "filter.php?c=" + catType
 
   } else if (type === "random") {
@@ -43,6 +41,17 @@ function onClick(e) {
     });
 }
 
+function itemClicked(e) {
+  e.preventDefault();
+  //FIXME delete this
+  let corsUrl = "https://cors-anywhere.herokuapp.com/"
+  let url = corsUrl + "http://themealdb.com/api/json/v1/1/";
+  url += "search.php?s=" + e.target.innerHTML;
+
+  // Add individual recipe showing
+  console.log(url);
+}
+
 function recipeResult(info) {
 
 }
@@ -52,13 +61,19 @@ function listResult(json) {
   results += "<h3 id='search-results-header'> We found the following recipes: </h3>";
   for (let i = 0; i < json.meals.length; i++) {
     results += "<div class='recipe-row'>";
-    results += "<p class='recipe-list-title'>";
-    results += json.meals[i].strMeal + "</p>";
+    results += "<a class='recipe-list-title'>";
+    results += json.meals[i].strMeal + "</a>";
     results += "<img class='recipe-thumbnail' src='" + json.meals[i].strMealThumb + "'/>";
     results += "</div>"
   }
   results += "</div>";
   document.getElementById("response").innerHTML = results;
+
+  let arr = document.getElementsByClassName("recipe-list-title");
+  console.log(arr);
+  for (let i = 0; i < arr.length; i++) {
+    arr[i].addEventListener("click", itemClicked);
+  }
 }
 
 function updateResult(info) {
@@ -81,7 +96,7 @@ function selectorChange() {
     search_bar.placeholder = "Enter the name of a dish";
     input.appendChild(search_bar);
 
-  } else {
+  } else if (document.getElementById("selector").value === "category") {
     // https://www.themealdb.com/api/json/v1/1/categories.php
     let categories = document.createElement("select");
     categories.id = "categories";
