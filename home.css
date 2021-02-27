@@ -367,9 +367,8 @@ h2 {
 
     .header-thumbnail {
         width: auto;
-        height: auto;
-        max-width: 40%;
         height: fit-content;
+        max-width: 40%;
     }
     
     .header-titles {
