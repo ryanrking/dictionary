@@ -152,8 +152,8 @@ function recipeResult(json) {
 }
 
 function listResult(json) {
-  let results = "<div class='recipes'>";
-  results += "<h3 id='search-results-header'> We found the following recipes: </h3>";
+  let results = "<h3 id='search-results-header'> We found the following recipes: </h3>";
+  results += "<div class='recipes'>";
   for (let i = 0; i < json.meals.length; i++) {
     results += "<div class='recipe-row'>";
     results += "<a class='recipe-list-title'>";
