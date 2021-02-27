@@ -67,24 +67,28 @@ function recipeResult(json) {
     header_titles.className = "header-titles";
     
     let title = document.createElement("h2");
-    title.className = "recipe-title";
+    title.className = "title"; //recipe-title
     title.appendChild(document.createTextNode(json.meals[i].strMeal));
 
-    let title_category = document.createElement("h4");
-    title_category.className = "recipe-sub-title";
-    title_category.appendChild(document.createTextNode(json.meals[i].strCategory));
+    // let title_category = document.createElement("h4");
+    // title_category.className = "recipe-sub-title";
+    // title_category.appendChild(document.createTextNode(json.meals[i].strCategory));
 
-    let title_origin = document.createElement("h4");
-    title_origin.className = "recipe-sub-title";
-    title_origin.appendChild(document.createTextNode(json.meals[i].strArea));
+    // let title_origin = document.createElement("h4");
+    // title_origin.className = "recipe-sub-title";
+    // title_origin.appendChild(document.createTextNode(json.meals[i].strArea));
 
-    let cat_orig_pair = document.createElement("div");
+    // let cat_orig_pair = document.createElement("div");
+    // cat_orig_pair.className = "cat-orig-pair";
+    // cat_orig_pair.appendChild(title_category);
+    // cat_orig_pair.appendChild(title_origin)
+
+    let cat_orig_pair = document.createElement("h4");
     cat_orig_pair.className = "cat-orig-pair";
-    cat_orig_pair.appendChild(title_category);
-    cat_orig_pair.appendChild(title_origin)
+    cat_orig_pair.appendChild(document.createTextNode(json.meals[i].strCategory + " • " + json.meals[i].strArea))
 
 
-    let title_tags = document.createElement("h5");
+    let title_tags = document.createElement("h4");
     if (json.meals[i].strTags != null) {
       title_tags.className = "recipe-tags";
       title_tags.appendChild(document.createTextNode(json.meals[i].strTags));
@@ -108,8 +112,9 @@ function recipeResult(json) {
     header_picture.className = "header-thumbnail";
     header_picture.src = json.meals[i].strMealThumb;
 
+    
+    header_info.appendChild(header_picture);
     header_info.appendChild(header_titles);
-    header_info.appendChild(header_picture)
 
 
     // Ingredients Info
@@ -144,11 +149,12 @@ function recipeResult(json) {
     instruct_title.appendChild(document.createTextNode("Instructions"));
 
     let instructions = document.createElement("p");
-    instructions.className = "recipe-instrucs";
+    instructions.className = "recipe-instructs";
     instructions.appendChild(instruct_title);
     instructions.appendChild(document.createTextNode(json.meals[i].strInstructions));
 
     recipe.appendChild(header_info);
+    recipe.appendChild(document.createElement("br"));
     recipe.appendChild(ingredients_group);
     recipe.appendChild(instructions);
     response.appendChild(recipe);

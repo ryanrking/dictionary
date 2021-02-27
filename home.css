@@ -267,3 +267,74 @@ h2 {
         padding: 80px 0 120px;
     }
 }
+
+
+
+/* Recipe Info!!!! */
+
+.header-titles {
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 10px;
+}
+
+.recipe {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    align-content: center;
+}
+
+/* .recipe-header {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    height: auto;
+} */
+
+/* .recipe-ingreds {
+    display: flex;
+}
+
+.recipe-instructs {
+    display: flex; */
+/* } */
+
+.header-thumbnail {
+    max-width: 100%;
+}
+
+.cat-orig-pair {
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (min-width: 800px) {
+    
+    .recipe-header {
+        display: flex;
+        flex-direction: row-reverse;
+        align-content: center;
+        justify-content: space-around;
+    }
+
+    .header-thumbnail {
+        width: auto;
+        height: auto;
+        max-width: 30%;
+    }
+    
+    .header-titles {
+        display: flex;
+        justify-self: flex-start;
+        flex-direction: column;
+        align-content: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        margin-right: 30px;
+    }
+}
