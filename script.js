@@ -1,30 +1,31 @@
 function onClick(e) {
   e.preventDefault();
+  // Delete this before publishing
+  let corsUrl = "https://cors-anywhere.herokuapp.com/"
   // get form values
-  let number = document.getElementById('number').value;
-  let s = document.getElementById('selector');
+  let s = document.getElementById("selector");
   let type = s.options[s.selectedIndex].value;
 
-  // check if number is empty
-  if (number === "") {
-    number = "random";
-  }
-
+  //FIXME assumes always random
+  //if (type === "random")
+  
   // setup URL
-  let url = "http://numberapi.com/" + number + "/" + type + "?json";
+  let url = corsUrl + "http://themealdb.com/api/json/v1/1/random.php";
+  
   // call API
   fetch(url)
     .then(function(response) {
       // make sure the request was successful
       if (response.status != 200) {
         return {
-          text: "Error calling the Numbers API service: " + response.statusText
+          text: "Error calling the TheMealDB API service: " + response.statusText
         }
       }
       return response.json();
+
     }).then(function(json) {
       // update DOM with response
-      updateResult(json.text);
+      console.log(json);
     });
 }
 
@@ -32,7 +33,7 @@ function updateResult(info) {
   document.getElementById('result').textContent = info;
 }
 
-document.getElementById('woo').addEventListener('click', onClick);
+document.getElementById('search').addEventListener('click', onClick);
 
 function selectorChange() {
   var input = document.getElementById("input");
