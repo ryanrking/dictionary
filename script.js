@@ -49,7 +49,19 @@ function itemClicked(e) {
   url += "search.php?s=" + e.target.innerHTML;
 
   // Add individual recipe showing
-  console.log(url);
+  fetch(url)
+  .then(function(response) {
+    // make sure the request was successful
+    if (response.status != 200) {
+      return {
+        text: "Error calling the TheMealDB API service: " + response.statusText
+      }
+    }
+    return response.json();
+
+  }).then(function(json) {
+      recipeResult(json);
+  });
 }
 
 function recipeResult(json) {
@@ -172,8 +184,8 @@ function recipeResult(json) {
 }
 
 function listResult(json) {
-  let results = "<div class='recipes'>";
-  results += "<h3 id='search-results-header'> We found the following recipes: </h3>";
+  let results = "<h3 id='search-results-header'> We found the following recipes: </h3>";
+  results += "<div class='recipes'>";
   for (let i = 0; i < json.meals.length; i++) {
     results += "<div class='recipe-row'>";
     results += "<a class='recipe-list-title'>";

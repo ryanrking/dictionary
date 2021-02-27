@@ -124,33 +124,47 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width:100%;
 }
 
 #selector {
     padding: 5px;
     margin: 15px 0 0 0;
     width: 200px;
+    height: 33px;
 }
 
 #categories {
     margin-top: 10px;
     padding: 5px;
     width: 200px;
+    height: 33px;
 }
 
 #search-input {
     margin-top: 10px;
     padding: 5px;
     width: 200px;
+    height: 33px;
 }
 
 #search {
-    padding: 5px;
+    padding: 5px 10px;
     margin: 10px 0 0 0;
+    background-color: #F25116;
+    border-radius: 12px;
+    width: fit-content;
+    text-align: center;
+    font-size: 1em;
+    color: white;
+    border: none;
+    box-shadow: 0 6px 16px -1px rgb(0 0 0 / 25%);
 }
 
 #search-results-header {
-    margin: 40px 0 20px;
+    margin: 40px 5px 20px;
+    text-align: center;
+    align-self: center;
 }
 
 .recipes {
@@ -167,11 +181,13 @@ h2 {
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
-    margin-bottom: 20px;
+    padding: 15px 0 15px 0;
+    border-bottom: 1px solid rgb(189, 189, 189);
 }
 
 .recipe-row:last-of-type {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
+    border-bottom: none;
 }
 
 .recipe-list-title {
@@ -180,10 +196,26 @@ h2 {
     font-size: 1.2em;
     font-weight: normal;
     color: #172944;
+    text-decoration: underline;
+    align-self: center;
+}
+
+.recipe-list-title:hover {
+    cursor: pointer;
 }
 
 .recipe-thumbnail {
     width: 100px;
+}
+
+
+@media only screen and (min-width:600px) {
+    .recipe-row:last-of-type {
+        border-bottom: 1px solid rgb(189, 189, 189);
+    }
+    .recipe-row {
+        justify-content: space-between;
+    }
 }
 
 
@@ -192,7 +224,6 @@ h2 {
         flex-direction: row;
         justify-content: space-around;
         margin-bottom: 5px;
-
     }
 
     #first-feature {
@@ -223,6 +254,10 @@ h2 {
 
     #right-feature .feature-description {
         margin: 0 50px 0 20px;
+    }
+
+    #response {
+        width:600px;
     }
 }
 
@@ -340,5 +375,55 @@ h2 {
         justify-content: flex-start;
         text-align: left;
         margin-right: 50px;
+    }
+}
+
+/* End Recipe stuff */
+
+@media only screen and (min-width: 800px) and (max-width: 1349px) {
+    #response {
+        width:95%;
+    }
+
+    .recipe-row {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: .5%;
+        margin-right: .5%;
+    }
+
+    .recipes {
+        width: 100%;
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .recipes > .recipe-row {
+        width: 48%;
+    }
+}
+
+@media only screen and (min-width: 1350px) {  
+    #response {
+        width:90%;
+    }
+
+    .recipe-row {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: .5%;
+        margin-right: .5%;
+    }
+
+    .recipes {
+        width: 100%;
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .recipes > .recipe-row {
+        width: 30%;
     }
 }
