@@ -35,11 +35,29 @@ function updateResult(info) {
 document.getElementById('woo').addEventListener('click', onClick);
 
 function selectorChange() {
+  var input = document.getElementById("input");
+  input.innerHTML = "";
   if (document.getElementById("selector").value === "random") {
     // Pull up random dish
   } else if (document.getElementById("selector").value === "search") {
     // Make search bar appear
+    let search_bar = document.createElement("input");
+    search_bar.id = "search-input";
+    search_bar.type = "text";
+    search_bar.placeholder = "Enter the name of a dish to search!";
+    input.appendChild(search_bar);
   } else {
+    // https://www.themealdb.com/api/json/v1/1/categories.php
+    let categories = document.createElement("select");
+    categories.id = "categories";
+
+    let url = "http://www.themealdb.com/api/json/v1/1/categories.php";
+    // call API
+    
+
+    // <option value="random">Random Dish</option>
+    // <select id="selector" onchange="selectorChange()">
+
     // Make dropdown 2 appear
   }
 }
