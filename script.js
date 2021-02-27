@@ -37,7 +37,7 @@ document.getElementById('woo').addEventListener('click', onClick);
 function selectorChange() {
   if (document.getElementById("selector").value === "random") {
     // Pull up random dish
-  } else if (document.getElementById("selector") === "search") {
+  } else if (document.getElementById("selector").value === "search") {
     // Make search bar appear
   } else {
     // Make dropdown 2 appear
