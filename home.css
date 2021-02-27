@@ -328,22 +328,8 @@ h2 {
     align-content: center;
 }
 
-/* .recipe-header {
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    height: auto;
-} */
-
-/* .recipe-ingreds {
-    display: flex;
-}
-
-.recipe-instructs {
-    display: flex; */
-/* } */
-
 .header-thumbnail {
+    max-height: 100%;
     max-width: 100%;
 }
 
@@ -358,17 +344,15 @@ h2 {
         padding: 50px;
     }
 
+    .header-thumbnail {
+        max-width: 40%;
+    }
+
     .recipe-header {
         display: flex;
         flex-direction: row-reverse;
         align-content: flex-end;
         justify-content: flex-end;
-    }
-
-    .header-thumbnail {
-        width: auto;
-        height: fit-content;
-        max-width: 40%;
     }
     
     .header-titles {
