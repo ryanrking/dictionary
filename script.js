@@ -49,7 +49,19 @@ function itemClicked(e) {
   url += "search.php?s=" + e.target.innerHTML;
 
   // Add individual recipe showing
-  console.log(url);
+  fetch(url)
+  .then(function(response) {
+    // make sure the request was successful
+    if (response.status != 200) {
+      return {
+        text: "Error calling the TheMealDB API service: " + response.statusText
+      }
+    }
+    return response.json();
+
+  }).then(function(json) {
+      recipeResult(json);
+  });
 }
 
 function recipeResult(json) {
