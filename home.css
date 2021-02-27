@@ -208,6 +208,36 @@ h2 {
     width: 100px;
 }
 
+/* Recipe Info!!!! */
+
+.header-titles {
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 10px;
+}
+
+.recipe {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    align-content: center;
+}
+
+.header-thumbnail {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.cat-orig-pair {
+    display: flex;
+    flex-direction: row;
+}
+
 
 @media only screen and (min-width:600px) {
     .recipe-row:last-of-type {
@@ -305,37 +335,6 @@ h2 {
     .banner {
         padding: 80px 0 120px;
     }
-}
-
-
-
-/* Recipe Info!!!! */
-
-.header-titles {
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-    padding-top: 10px;
-}
-
-.recipe {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    padding: 10px;
-    justify-content: center;
-    align-content: center;
-}
-
-.header-thumbnail {
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.cat-orig-pair {
-    display: flex;
-    flex-direction: row;
 }
 
 @media only screen and (min-width: 800px) {
