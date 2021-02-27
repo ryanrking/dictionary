@@ -114,7 +114,7 @@ function recipeResult(json) {
 
     
     header_info.appendChild(header_picture);
-    header_info.appendChild(header_titles);
+    // header_info.appendChild(header_titles);
 
 
     // Ingredients Info
@@ -143,6 +143,14 @@ function recipeResult(json) {
     ingredients_group.appendChild(ingred_title);
     ingredients_group.appendChild(ingredients_table);
 
+    let header_ingreds = document.createElement("div");
+    header_ingreds.className = "header-ingreds";
+    header_ingreds.appendChild(header_titles);
+    header_ingreds.appendChild(document.createElement("br"));
+    header_ingreds.appendChild(ingredients_group);
+
+    header_info.appendChild(header_ingreds);
+
 
     // Instructions info
     let instruct_title = document.createElement("h4");
@@ -155,7 +163,7 @@ function recipeResult(json) {
 
     recipe.appendChild(header_info);
     recipe.appendChild(document.createElement("br"));
-    recipe.appendChild(ingredients_group);
+    // recipe.appendChild(ingredients_group);
     recipe.appendChild(instructions);
     response.appendChild(recipe);
   }
