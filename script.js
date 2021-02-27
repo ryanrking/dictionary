@@ -1,5 +1,5 @@
 // This was only needed for local testing
-var corsURL = ""
+var corsUrl = ""
 //var corsUrl = "https://cors-anywhere.herokuapp.com/"
 
 // Handle clicking of main submit button
