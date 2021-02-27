@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Arvo', serif;
 }
 
 h1, h2, h3, h4, h5 {
@@ -14,7 +14,7 @@ p, a, li, label {
 }
 
 body {
-    background-color:  #FFE2BF;
+    background-color:rgb(240, 239, 239);
 }
 
 p {
@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5 {
   }
 
 .footer {
-     background-color: rgb(240, 239, 239);
+    background-color: rgb(200, 202, 209);
     height: 90px;
     width: 100%;
     display: flex;
