@@ -50,6 +50,7 @@ function recipeResult(json) {
     let recipe = document.createElement("div");
     recipe.className = "recipe";
 
+    // Recipe Header Info
     let header_info = document.createElement("div");
     header_info.className = "recipe-header";
 
@@ -58,30 +59,39 @@ function recipeResult(json) {
     
     let title = document.createElement("h2");
     title.className = "recipe-title";
-    title.appendChild(document.createTextNode(json.meals[j].strMeal));
+    title.appendChild(document.createTextNode(json.meals[i].strMeal));
 
     let title_category = document.createElement("h4");
     title_category.className = "recipe-sub-title";
-    title_category.appendChild(document.createTextNode(json.meals[j].strCategory));
+    title_category.appendChild(document.createTextNode(json.meals[i].strCategory));
 
     let title_origin = document.createElement("h4");
     title_origin.className = "recipe-sub-title";
-    title_origin.appendChild(document.createTextNode(json.meals[j].strArea));
+    title_origin.appendChild(document.createTextNode(json.meals[i].strArea));
+
+    let cat_orig_pair = document.createElement("div");
+    cat_orig_pair.className = "cat-orig-pair";
+    cat_orig_pair.appendChild(title_category);
+    cat_orig_pair.appendChild(title_origin)
+
 
     let title_tags = document.createElement("h5");
-    title_tags.className = "recipe-tags";
-    title_tags.appendChild(document.createTextNode(json.meals[j].strTags));
+    if (json.meals[i].strTags != null) {
+      title_tags.className = "recipe-tags";
+      title_tags.appendChild(document.createTextNode(json.meals[i].strTags));
+    }
 
     let video = document.createElement("a");
-    if ((video.href = json.meals[j].strYoutube) != "") {
+    if (json.meals[i].strYoutube != null) {
       video.className = "recipe-video";
-      video.href = json.meals[j].strYoutube
+      video.href = json.meals[i].strYoutube
       video.appendChild(document.createTextNode("Click Here For a Youtube Video"));
     }
 
     header_titles.appendChild(title);
-    header_titles.appendChild(title_category);
-    header_titles.appendChild(title_origin);
+    // header_titles.appendChild(title_category);
+    // header_titles.appendChild(title_origin);
+    header_titles.appendChild(cat_orig_pair);
     header_titles.appendChild(title_tags);
     header_titles.appendChild(video);
 
@@ -93,49 +103,45 @@ function recipeResult(json) {
     header_info.appendChild(header_picture)
 
 
-    // Ingredients group
+    // Ingredients Info
     let ingredients_group = document.createElement("div");
     ingredients_group.className = "recipe-ingreds";
+
+    let ingred_title = document.createElement("h4");
+    ingred_title.appendChild(document.createTextNode("Ingredients"));
 
     let ingredients_table = document.createElement("table");
     ingredients_table.className = "recipe-table";
 
-    let row_head = document.createElement("tr");
-    let table_title_1 = document.createElement("td");
-    table_title_1.appendChild(document.createTextNode("Ingredient"));
-    let table_title_2 = document.createElement("td");
-    table_title_2.appendChild(document.createTextNode("Measurement"));
-    row_head.appendChild(table_title_1);
-    row_head.appendChild(table_title_2);
-
-    ingredients_table.appendChild(row_head);
-
     for (var j = 1; j <= 20; j++) {
       let row = document.createElement("tr");
 
-      if ((str_ingred = json.meals[i]["strIngredients" + j]) !== None) {
+      if ((str_ingred = json.meals[i]["strIngredient" + j]) != "") {
         let ingredient = document.createElement("td");
         ingredient.className = "ingredient";
-        ingredient.appendChild(document.createTextNode(str_ingred));
-
-        let measurment = document.createElement("td");
-        measurment.className = "measurement";
-        measurment.appendChild(document.createTextNode(json.meals[i]["strMeasure" + j]));
+        str_measure = json.meals[i]["strMeasure" + j];
+        ingredient.appendChild(document.createTextNode(str_measure + "  " + str_ingred));
 
         row.appendChild(ingredient);
-        row.appendChild(measurment);
         ingredients_table.appendChild(row);
       }
     }
+    ingredients_group.appendChild(ingred_title);
     ingredients_group.appendChild(ingredients_table);
 
 
+    // Instructions info
+    let instruct_title = document.createElement("h4");
+    instruct_title.appendChild(document.createTextNode("Instructions"));
+
     let instructions = document.createElement("p");
     instructions.className = "recipe-instrucs";
+    instructions.appendChild(instruct_title);
     instructions.appendChild(document.createTextNode(json.meals[i].strInstructions));
 
-    recipe.appendChild(ingredients_group)
-    recipe.appendChild(instructions)
+    recipe.appendChild(header_info);
+    recipe.appendChild(ingredients_group);
+    recipe.appendChild(instructions);
     response.appendChild(recipe);
   }
   
@@ -263,3 +269,17 @@ function selectorChange() {
   //   let instructions = document.createElement("div");
   //   instructions.className = "recipe-instrucs";
   // }
+
+
+
+  // ingredient.appendChild(document.createTextNode(str_ingred));
+
+        // let measurment = document.createElement("td");
+        // measurment.className = "measurement";
+        // measurment.appendChild(document.createTextNode(json.meals[i]["strMeasure" + j]));
+                // row.appendChild(measurment);
+
+
+                // let table_title_2 = document.createElement("td");
+                // table_title_2.appendChild(document.createTextNode("Measurement"));
+                // row_head.appendChild(table_title_2);
