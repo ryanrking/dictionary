@@ -1,6 +1,4 @@
-// This was only needed for local testing
-var corsUrl = ""
-//var corsUrl = "https://cors-anywhere.herokuapp.com/"
+var corsUrl = "https://cors-anywhere.herokuapp.com/"
 
 // Handle clicking of main submit button
 function onClick(e) {
